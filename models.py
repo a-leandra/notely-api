@@ -6,6 +6,8 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 
 class Note(Base):
+    """The dedicated database model for notes."""
+
     __tablename__ = "notes"
 
     id: Mapped[str] = mapped_column(primary_key=True)

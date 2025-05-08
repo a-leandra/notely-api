@@ -4,6 +4,7 @@ from db import Base, engine
 
 
 async def create_db():
+    """Coroutine responsible for creating database tables."""
     async with engine.begin() as conn:
         from models import Note
 

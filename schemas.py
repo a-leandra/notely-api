@@ -4,6 +4,8 @@ from pydantic import BaseModel, ConfigDict
 
 
 class NoteModel(BaseModel):
+    """Schema for retrieving a note."""
+
     id: str
     title: str
     content: str
@@ -15,6 +17,8 @@ class NoteModel(BaseModel):
 
 
 class NoteCreateModel(BaseModel):
+    """Schema for creating/updating a note."""
+
     title: str
     content: str
 
