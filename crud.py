@@ -33,7 +33,10 @@ class CRUD:
         self, async_session: async_sessionmaker[AsyncSession], note_id: str, data
     ):
         async with async_session() as session:
-            note = await self.get_by_id(session, note_id)
+            statement = select(Note).filter(Note.id == note_id)
+
+            result = await session.execute(statement)
+            note = result.scalars().one()
 
             note.title = data["title"]
             note.content = data["content"]
@@ -46,3 +49,5 @@ class CRUD:
         async with async_session() as session:
             session.delete(note)
             await session.commit()
+
+        return {}
