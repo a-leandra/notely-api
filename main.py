@@ -1,4 +1,7 @@
+from crud import CRUD
+from db import engine
 from fastapi import FastAPI
+from sqlalchemy.ext.asyncio import async_sessionmaker
 
 app = FastAPI(
     title="Notely API",
@@ -6,10 +9,16 @@ app = FastAPI(
     docs_url="/",
 )
 
+session = async_sessionmaker(bind=engine, expire_on_commit=False)
+
+db = CRUD()
+
 
 @app.get("/notes")
 async def get_all_notes():
-    pass
+    notes = await db.get_all(session)
+
+    return notes
 
 
 @app.post("/notes")
