@@ -17,6 +17,8 @@ class CRUD:
             session.add(note)
             await session.commit()
 
+        return note
+
     async def get_by_id(
         self, async_session: async_sessionmaker[AsyncSession], note_id: str
     ):
