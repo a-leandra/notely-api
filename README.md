@@ -48,7 +48,7 @@
 5. **Run the Application**
 
    ```bash
-   uvicorn main:app --reload
+   python runserver.py
    ```
 
    The API will be accessible at `http://127.0.0.1:8000`.
